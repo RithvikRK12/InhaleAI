@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Breathing Guide - InhaleAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="guide-container">
+        <header class="guide-header">
+            <div class="header-left">
+                <a href="/" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+                <div class="header-brand">
+                    <i class="fas fa-lungs"></i>
+                    <span>InhaleAI</span>
+                </div>
+                <h1>AI Breathing Guide</h1>
+            </div>
+            <div class="status-indicators">
+                <div class="status-item" id="camera-status">
+                    <span class="status-dot"></span>
+                    <span>Camera</span>
+                </div>
+                <div class="status-item" id="breathing-status">
+                    <span class="status-dot"></span>
+                    <span>Breathing</span>
+                </div>
+                <div class="status-item" id="ai-status">
+                    <span class="status-dot"></span>
+                    <span>AI Active</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Breathing Rules Section -->
+        <div class="breathing-rules-section">
+            <div class="section-header">
+                <h2><i class="fas fa-book-open"></i> Breathing Rules & Technique</h2>
+                <p>Master the art of alternate nostril breathing with these essential guidelines</p>
+            </div>
+            
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Timing</h3>
+                    <p><strong>4-6 seconds</strong> for each inhale and exhale phase. This creates a healthy, calming rhythm that activates your parasympathetic nervous system.</p>
+                </div>
+                
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <h3>Hand Position</h3>
+                    <p>Use your <strong>right hand</strong> with thumb and index finger. Gently close one nostril at a time without pressing too hard.</p>
+                </div>
+                
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Nostril Sequence</h3>
+                    <p>Follow this pattern: <strong>Right nostril → Left nostril → Right nostril → Left nostril</strong>. Complete 4 cycles for optimal benefits.</p>
+                </div>
+                
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Posture</h3>
+                    <p>Sit with <strong>straight spine</strong>, <strong>closed eyes</strong>, and <strong>centered head</strong>. Keep shoulders relaxed and comfortable.</p>
+                </div>
+                
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Benefits</h3>
+                    <p>Reduces stress, improves focus, balances energy, and promotes deep relaxation. Practice for 5-10 minutes daily.</p>
+                </div>
+                
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Important Notes</h3>
+                    <p>Stop if you feel dizzy. Breathe naturally - don't force. The AI will guide you with visual and audio cues.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Camera Section -->
+        <div class="camera-section">
+            <div class="section-header">
+                <h2><i class="fas fa-video"></i> AI-Guided Session</h2>
+                <p>Start your camera to begin the AI-assisted breathing session</p>
+            </div>
+            
+            <div class="camera-container">
+                <div class="video-panel">
+                    <div class="video-container" id="video-container">
+                        <img id="video-feed" src="" alt="Camera Feed" style="display: none;">
+                        <div id="video-placeholder" class="video-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h3>Camera Feed</h3>
+                                <p>Click "Start Camera" to begin your AI-guided breathing session</p>
+                            </div>
+                        </div>
+                        <div class="video-controls">
+                            <button id="fullscreen-btn" class="video-control-btn" title="Toggle Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                            <button id="mute-audio-btn" class="video-control-btn" title="Toggle Audio Detection">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Tracking Dashboard -->
+                    <div class="tracking-dashboard">
+                        <!-- Breathing Phase Tracker -->
+                        <div class="tracker-card breathing-tracker">
+                            <div class="tracker-header">
+                                <h3><i class="fas fa-lungs"></i> Breathing Phase</h3>
+                            </div>
+                            <div class="breathing-indicator">
+                                <div class="phase-indicator" id="phase-indicator">
+                                    <div class="phase-circle" id="phase-circle"></div>
+                                    <div class="breathing-phase" id="breathing-phase">Idle</div>
+                                </div>
+                                <div class="breath-circle" id="breath-circle">
+                                    <div class="breath-inner"></div>
+                                </div>
+                            </div>
+                            <div class="breath-timer">
+                                <span id="breath-timer">0s</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Nostril Sequence Tracker -->
+                        <div class="tracker-card nostril-tracker">
+                            <div class="tracker-header">
+                                <h3><i class="fas fa-hand-paper"></i> Nostril Sequence</h3>
+                            </div>
+                            <div class="nostril-visualizer">
+                                <div class="nostril left" id="left-nostril">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Left</span>
+                                </div>
+                                <div class="nostril right" id="right-nostril">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Right</span>
+                                </div>
+                            </div>
+                            <div class="sequence-info">
+                                <div class="sequence-step">
+                                    <span>Step: </span>
+                                    <span id="sequence-step">1/4</span>
+                                </div>
+                                <div class="current-nostril">
+                                    <span>Current: </span>
+                                    <span id="current-nostril-display">None</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Posture & Focus Monitor -->
+                        <div class="tracker-card posture-tracker">
+                            <div class="tracker-header">
+                                <h3><i class="fas fa-user-check"></i> Posture & Focus</h3>
+                            </div>
+                            <div class="status-grid">
+                                <div class="status-item">
+                                    <i class="fas fa-spine"></i>
+                                    <span>Spine: </span>
+                                    <span id="spine-status" class="status-value">Good</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>Eyes: </span>
+                                    <span id="eyes-status" class="status-value">Closed</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-head-side-brain"></i>
+                                    <span>Head: </span>
+                                    <span id="head-status" class="status-value">Centered</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rhythm Analysis -->
+                        <div class="tracker-card rhythm-tracker">
+                            <div class="tracker-header">
+                                <h3><i class="fas fa-chart-line"></i> Rhythm Analysis</h3>
+                            </div>
+                            <div class="rhythm-score">
+                                <span id="rhythm-score">--</span>
+                                <span class="score-label">/ 100</span>
+                            </div>
+                            <div class="rhythm-bar">
+                                <div class="rhythm-fill" id="rhythm-fill"></div>
+                            </div>
+                            <div class="rhythm-feedback" id="rhythm-feedback">Calibrating...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button id="start-camera-btn" class="btn btn-primary">
+                        <i class="fas fa-video"></i>
+                        <span>Start Camera</span>
+                    </button>
+                    <button id="start-breathing-btn" class="btn btn-secondary" disabled>
+                        <i class="fas fa-play"></i>
+                        <span>Start Breathing</span>
+                    </button>
+                    <button id="stop-camera-btn" class="btn btn-danger" disabled>
+                        <i class="fas fa-stop"></i>
+                        <span>Stop Camera</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const startCameraBtn = document.getElementById('start-camera-btn');
+            const startBreathingBtn = document.getElementById('start-breathing-btn');
+            const stopCameraBtn = document.getElementById('stop-camera-btn');
+            const videoFeed = document.getElementById('video-feed');
+            const videoPlaceholder = document.getElementById('video-placeholder');
+            const breathingPhase = document.getElementById('breathing-phase');
+            const breathCircle = document.getElementById('breath-circle');
+            const breathTimer = document.getElementById('breath-timer');
+            const leftNostril = document.getElementById('left-nostril');
+            const rightNostril = document.getElementById('right-nostril');
+            const sequenceStep = document.getElementById('sequence-step');
+            const currentNostrilDisplay = document.getElementById('current-nostril-display');
+            const spineStatus = document.getElementById('spine-status');
+            const eyesStatus = document.getElementById('eyes-status');
+            const headStatus = document.getElementById('head-status');
+            const rhythmScore = document.getElementById('rhythm-score');
+            const rhythmFill = document.getElementById('rhythm-fill');
+            const rhythmFeedback = document.getElementById('rhythm-feedback');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const muteAudioBtn = document.getElementById('mute-audio-btn');
+            const videoContainer = document.getElementById('video-container');
+            
+            let cameraActive = false;
+            let breathingActive = false;
+            let sessionStartTime = null;
+            let breathStartTime = null;
+            let statusUpdateInterval = null;
+            let timerInterval = null;
+            let audioEnabled = true;
+            
+            // Start camera
+            startCameraBtn.addEventListener('click', function() {
+                fetch('/start_camera')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            cameraActive = true;
+                            videoFeed.style.display = 'block';
+                            videoPlaceholder.style.display = 'none';
+                            videoFeed.src = '/video_feed';
+                            
+                            startCameraBtn.disabled = true;
+                            startBreathingBtn.disabled = false;
+                            stopCameraBtn.disabled = false;
+                            
+                            startStatusUpdates();
+                            startSessionTimer();
+                        }
+                    })
+                    .catch(error => console.error('Error starting camera:', error));
+            });
+            
+            // Start breathing
+            startBreathingBtn.addEventListener('click', function() {
+                fetch('/start_breathing')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            breathingActive = true;
+                            startBreathingBtn.disabled = true;
+                            startBreathTimer();
+                        }
+                    })
+                    .catch(error => console.error('Error starting breathing:', error));
+            });
+            
+            // Stop camera
+            stopCameraBtn.addEventListener('click', function() {
+                fetch('/stop_camera')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            cameraActive = false;
+                            breathingActive = false;
+                            videoFeed.style.display = 'none';
+                            videoPlaceholder.style.display = 'block';
+                            videoFeed.src = '';
+                            
+                            startCameraBtn.disabled = false;
+                            startBreathingBtn.disabled = true;
+                            stopCameraBtn.disabled = true;
+                            
+                            stopStatusUpdates();
+                            stopSessionTimer();
+                            stopBreathTimer();
+                        }
+                    })
+                    .catch(error => console.error('Error stopping camera:', error));
+            });
+            
+            // Session timer
+            function startSessionTimer() {
+                sessionStartTime = Date.now();
+                timerInterval = setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
+                    const minutes = Math.floor(elapsed / 60);
+                    const seconds = elapsed % 60;
+                    document.getElementById('session-timer').textContent = 
+                        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+            
+            function stopSessionTimer() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                document.getElementById('session-timer').textContent = '00:00';
+            }
+            
+            // Breath timer
+            function startBreathTimer() {
+                breathStartTime = Date.now();
+                const breathInterval = setInterval(() => {
+                    if (!breathingActive) {
+                        clearInterval(breathInterval);
+                        return;
+                    }
+                    const elapsed = Math.floor((Date.now() - breathStartTime) / 1000);
+                    breathTimer.textContent = `${elapsed}s`;
+                }, 1000);
+            }
+            
+            function stopBreathTimer() {
+                breathStartTime = null;
+                breathTimer.textContent = '0s';
+            }
+            
+            // Sync breathing animation with video data
+            function syncBreathingAnimation(cycleProgress, circleScale) {
+                if (!cameraActive) return;
+                
+                // Use the exact cycle progress from video
+                if (cycleProgress < 0.5) {
+                    // Inhale phase
+                    const inhaleProgress = cycleProgress * 2; // 0 to 1
+                    const scale = 0.5 + (inhaleProgress * 0.5); // 0.5 to 1.0
+                    breathCircle.style.transform = `scale(${scale})`;
+                    breathingPhase.textContent = 'INHALE';
+                    breathCircle.classList.add('inhaling');
+                    breathCircle.classList.remove('exhaling');
+                } else {
+                    // Exhale phase
+                    const exhaleProgress = (cycleProgress - 0.5) * 2; // 0 to 1
+                    const scale = 1.0 - (exhaleProgress * 0.5); // 1.0 to 0.5
+                    breathCircle.style.transform = `scale(${scale})`;
+                    breathingPhase.textContent = 'EXHALE';
+                    breathCircle.classList.add('exhaling');
+                    breathCircle.classList.remove('inhaling');
+                }
+                
+                // Update breath timer based on cycle progress
+                const cycleTime = cycleProgress * 8; // 8 second cycle
+                const phaseTime = cycleProgress < 0.5 ? cycleTime : cycleTime - 4;
+                breathTimer.textContent = `${Math.floor(phaseTime)}s`;
+            }
+            
+            // Update nostril tracking
+            function updateNostrilTracking(nostril, sequenceIndex = 0) {
+                // Reset nostril highlights
+                leftNostril.classList.remove('active');
+                rightNostril.classList.remove('active');
+                
+                // Highlight current nostril
+                if (nostril === 'left') {
+                    leftNostril.classList.add('active');
+                } else if (nostril === 'right') {
+                    rightNostril.classList.add('active');
+                }
+                
+                // Update sequence progress
+                sequenceStep.textContent = `${sequenceIndex + 1}/4`;
+                currentNostrilDisplay.textContent = nostril || 'None';
+            }
+            
+            // Update posture status
+            function updatePostureStatus(spine, eyes, head) {
+                spineStatus.textContent = spine || 'Good';
+                eyesStatus.textContent = eyes || 'Closed';
+                headStatus.textContent = head || 'Centered';
+                
+                // Update status colors
+                updateStatusColor('spine-status', spine === 'Good');
+                updateStatusColor('eyes-status', eyes === 'Closed');
+                updateStatusColor('head-status', head === 'Centered');
+            }
+            
+            function updateStatusColor(elementId, isGood) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.className = `status-value ${isGood ? 'good' : 'warning'}`;
+                }
+            }
+            
+            // Update rhythm analysis
+            function updateRhythmAnalysis(score, feedback) {
+                rhythmScore.textContent = score || '--';
+                rhythmFeedback.textContent = feedback || 'Calibrating...';
+                
+                // Update rhythm bar
+                const percentage = score ? Math.min(score, 100) : 0;
+                rhythmFill.style.width = `${percentage}%`;
+                
+                // Update bar color based on score
+                if (percentage >= 80) {
+                    rhythmFill.className = 'rhythm-fill excellent';
+                } else if (percentage >= 60) {
+                    rhythmFill.className = 'rhythm-fill good';
+                } else if (percentage >= 40) {
+                    rhythmFill.className = 'rhythm-fill fair';
+                } else {
+                    rhythmFill.className = 'rhythm-fill poor';
+                }
+            }
+            
+            // Fullscreen functionality
+            fullscreenBtn.addEventListener('click', function() {
+                if (!document.fullscreenElement) {
+                    videoContainer.requestFullscreen().then(() => {
+                        fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                        fullscreenBtn.title = 'Exit Fullscreen';
+                    }).catch(err => {
+                        console.error('Error attempting to enable fullscreen:', err);
+                    });
+                } else {
+                    document.exitFullscreen().then(() => {
+                        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                        fullscreenBtn.title = 'Toggle Fullscreen';
+                    }).catch(err => {
+                        console.error('Error attempting to exit fullscreen:', err);
+                    });
+                }
+            });
+            
+            // Audio toggle functionality
+            muteAudioBtn.addEventListener('click', function() {
+                audioEnabled = !audioEnabled;
+                if (audioEnabled) {
+                    muteAudioBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                    muteAudioBtn.title = 'Disable Audio Detection';
+                    muteAudioBtn.classList.remove('muted');
+                } else {
+                    muteAudioBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+                    muteAudioBtn.title = 'Enable Audio Detection';
+                    muteAudioBtn.classList.add('muted');
+                }
+                
+                // Send audio preference to server
+                fetch('/toggle_audio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ enabled: audioEnabled })
+                }).catch(error => console.error('Error toggling audio:', error));
+            });
+            
+            // Start status updates
+            function startStatusUpdates() {
+                statusUpdateInterval = setInterval(() => {
+                    if (!cameraActive) {
+                        clearInterval(statusUpdateInterval);
+                        return;
+                    }
+                    
+                    fetch('/status')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'active') {
+                                // Sync breathing animation with video data
+                                syncBreathingAnimation(data.cycle_progress || 0, data.circle_scale || 0);
+                                
+                                // Update nostril tracking
+                                updateNostrilTracking(data.current_nostril, data.nostril_index || 0);
+                                
+                                // Update posture status
+                                updatePostureStatus(data.spine_status, data.eyes_status, data.head_status);
+                                
+                                // Update rhythm analysis
+                                updateRhythmAnalysis(data.rhythm_score, data.rhythm_feedback);
+                            }
+                        })
+                        .catch(error => console.error('Error fetching status:', error));
+                }, 100); // Update more frequently for smooth animation
+            }
+            
+            function stopStatusUpdates() {
+                if (statusUpdateInterval) {
+                    clearInterval(statusUpdateInterval);
+                    statusUpdateInterval = null;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

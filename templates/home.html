@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InhaleAI - AI-Assisted Breathing Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-lungs"></i>
+                <span>InhaleAI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#benefits" class="nav-link">Benefits</a>
+                <a href="/guide" class="nav-link cta-nav">Start Breathing</a>
+            </div>
+        </nav>
+
+        <header class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-brain"></i>
+                    <span>AI-Powered Meditation</span>
+                </div>
+                <h1 class="main-title">
+                    <span class="title-primary">Master Your</span>
+                    <span class="title-accent">Breath</span>
+                    <span class="title-subtitle">with AI Guidance</span>
+                </h1>
+                <p class="hero-subtitle">Transform your breathing practice with intelligent real-time feedback</p>
+                <p class="hero-description">
+                    Experience the ancient wisdom of Nadi Shodhana enhanced by cutting-edge AI technology. 
+                    Our advanced computer vision and audio analysis provide personalized guidance for 
+                    perfect alternate nostril breathing, helping you achieve deeper meditation and better health.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Sessions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Available</div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <a href="/guide" class="cta-button primary">
+                        <i class="fas fa-play"></i>
+                        <span>Start Your Journey</span>
+                        <div class="button-ripple"></div>
+                    </a>
+                    <a href="#how-it-works" class="cta-button secondary">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="breathing-animation">
+                    <div class="circle circle-1"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-3"></div>
+                    <div class="ai-overlay">
+                        <div class="ai-element ai-1">
+                            <i class="fas fa-eye"></i>
+                            <span>Eye Tracking</span>
+                        </div>
+                        <div class="ai-element ai-2">
+                            <i class="fas fa-hand-paper"></i>
+                            <span>Hand Detection</span>
+                        </div>
+                        <div class="ai-element ai-3">
+                            <i class="fas fa-lungs"></i>
+                            <span>Breath Analysis</span>
+                        </div>
+                        <div class="ai-element ai-4">
+                            <i class="fas fa-spine"></i>
+                            <span>Posture Monitor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="section-header">
+                <h2 class="section-title">Advanced AI Features</h2>
+                <p class="section-subtitle">Cutting-edge technology meets ancient wisdom</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Real-time Eye Tracking</h3>
+                    <p>Advanced computer vision monitors your eye state to ensure proper meditation posture with eyes closed.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <h3>Hand Gesture Recognition</h3>
+                    <p>Intelligent detection of hand positioning for correct nostril closure during breathing sequences.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Gesture AI</span>
+                        <span class="tag">Precision</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Breathing Rhythm Analysis</h3>
+                    <p>Audio-based analysis of your breathing pattern with real-time feedback and optimization suggestions.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Audio AI</span>
+                        <span class="tag">Health</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spine"></i>
+                    </div>
+                    <h3>Posture Monitoring</h3>
+                    <p>Continuous spinal alignment tracking ensures optimal breathing position and prevents strain.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Posture AI</span>
+                        <span class="tag">Wellness</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <h3>Voice Guidance</h3>
+                    <p>Intelligent voice coaching provides gentle corrections and encouragement throughout your practice.</p>
+                    <div class="feature-tags">
+                        <span class="tag">TTS</span>
+                        <span class="tag">Guidance</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Detailed analytics and progress monitoring to help you improve your breathing technique over time.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Analytics</span>
+                        <span class="tag">Progress</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works-section">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple steps to transform your breathing practice</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Position Yourself</h3>
+                        <p>Sit comfortably with your back straight. Our AI will monitor your posture and provide real-time feedback.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Start Camera</h3>
+                        <p>Enable your camera to begin AI-powered monitoring of your breathing technique and posture.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-video"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Follow Guidance</h3>
+                        <p>Watch the breathing circle and follow voice instructions for perfect alternate nostril breathing.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-circle-notch"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Track Progress</h3>
+                        <p>Monitor your improvement with real-time analytics and personalized feedback from our AI system.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="benefits-section">
+            <div class="section-header">
+                <h2 class="section-title">Health Benefits</h2>
+                <p class="section-subtitle">Scientific benefits of proper breathing practice</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Reduced Stress</h3>
+                    <p>Lower cortisol levels and improved stress response through controlled breathing patterns.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Enhanced Focus</h3>
+                    <p>Improved concentration and mental clarity through regular breathing practice.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Better Sleep</h3>
+                    <p>Improved sleep quality and faster sleep onset through relaxation techniques.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Immune Boost</h3>
+                    <p>Strengthened immune system through improved oxygen circulation and stress reduction.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Lung Capacity</h3>
+                    <p>Increased lung capacity and improved respiratory function through regular practice.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Mood Enhancement</h3>
+                    <p>Improved mood and emotional well-being through mindful breathing practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section-final">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Breathing?</h2>
+                <p>Join thousands of users who have improved their health and well-being with AI-guided breathing practice.</p>
+                <div class="cta-buttons">
+                    <a href="/guide" class="cta-button primary large">
+                        <i class="fas fa-play"></i>
+                        <span>Start Free Session</span>
+                    </a>
+                    <a href="#features" class="cta-button secondary large">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-lungs"></i>
+                    <span>InhaleAI</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="/guide">Start Breathing</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 InhaleAI - Breathe Better, Live Better. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
